@@ -14,7 +14,9 @@ public class AuthService {
 
     public User getByEmail(String email) {
         Optional<User> user =  userRepository.findByEmail(email);
-        return user.get();
+        if(user.isPresent())
+            return user.get();
+        return null;
     }
 
     public User createUser(User user) {
